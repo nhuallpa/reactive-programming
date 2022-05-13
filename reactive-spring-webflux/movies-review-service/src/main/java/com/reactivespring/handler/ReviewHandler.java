@@ -56,7 +56,7 @@ public class ReviewHandler {
 
         Flux<Review> reviewsFlux;
         if (movieInfoId.isPresent()) {
-            reviewsFlux = reviewReactiveRepository.findReviewsByMovieInfoId(Long.valueOf(movieInfoId.get()));
+            reviewsFlux = reviewReactiveRepository.findByMovieInfoId(Long.valueOf(movieInfoId.get())).log();
         } else {
             reviewsFlux = reviewReactiveRepository.findAll();
         }
